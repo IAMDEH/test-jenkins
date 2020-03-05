@@ -8,7 +8,7 @@ kind: Pod
 spec:
   containers:
   - name: docker
-    image: iamdeh:docker-agent:v1
+    image: iamdeh/docker-agent:v1
     securityContext:
       privileged: true
     command:
