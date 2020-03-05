@@ -7,7 +7,7 @@ apiVersion: v1
 kind: Pod
 spec:
   containers:
- - name: docker
+  - name: docker
     image: docker:18.09
     command: ['cat']
     tty: true
@@ -18,6 +18,7 @@ spec:
   - name: dockersock
     hostPath:
       path: /var/run/docker.sock
+
 """
     }
   }
@@ -26,13 +27,13 @@ spec:
     stage('Build & Push') {
       steps {
         container('docker') {
-          // Build new imagee
-          sh "docker build -t 10.10.10.16:5000/test:${env.GIT_COMMIT} ."
+          // Build new image
+          sh "until docker ps; do sleep 3; done && docker build -t alexmt/argocd-demo:${env.GIT_COMMIT} ."
           // Publish new image
-          sh "docker push 10.10.10.16:5000/test:${env.GIT_COMMIT}"
+          sh "docker login --username $DOCKERHUB_CREDS_USR --password $DOCKERHUB_CREDS_PSW && docker push alexmt/argocd-demo:${env.GIT_COMMIT}"
         }
       }
     }
-    
+
   }
 }
