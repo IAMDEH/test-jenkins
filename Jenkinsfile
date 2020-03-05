@@ -2,7 +2,7 @@ pipeline {
   agent {
     kubernetes {
       label 'jenkins-slave'
-      yaml '''
+      yaml """
 apiVersion: v1
 kind: Pod
 spec:
@@ -18,7 +18,7 @@ spec:
   - name: dockersock
     hostPath:
       path: /var/run/docker.sock
-'''
+"""
     }
   }
   stages {
@@ -26,7 +26,7 @@ spec:
     stage('Build & Push') {
       steps {
         container('docker') {
-          // Build new image
+          // Build new imagee
           sh "docker build -t 10.10.10.16:5000/test:${env.GIT_COMMIT} ."
           // Publish new image
           sh "docker push 10.10.10.16:5000/test:${env.GIT_COMMIT}"
