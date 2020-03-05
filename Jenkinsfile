@@ -27,7 +27,7 @@ spec:
     stage('Build & Push') {
       steps {
         container('docker') {
-          // Build new image
+          // Build new imagee
           sh "docker build -t 10.10.10.16:5000/test:${env.GIT_COMMIT} ."
           // Publish new image
           sh "docker push 10.10.10.16:5000/test:${env.GIT_COMMIT}"
