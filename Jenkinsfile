@@ -7,20 +7,10 @@ apiVersion: v1
 kind: Pod
 spec:
   containers:
-  - name: dind
-    env:
-    - name: DOCKER_OPTS
-      value: --insecure-registry="10.10.10.16:5000"
-    image: docker:18.09-dind
+  - name: docker
+    image: iamdeh:docker-agent:v1
     securityContext:
       privileged: true
-  - name: docker
-    env:
-    - name: DOCKER_HOST
-      value: 127.0.0.1
-    - name: DOCKER_OPTS
-      value: --insecure-registry="10.10.10.16:5000"
-    image: docker:18.09
     command:
     - cat
     tty: true
