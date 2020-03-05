@@ -8,6 +8,9 @@ kind: Pod
 spec:
   containers:
   - name: dind
+    env:
+    - name: DOCKER_OPTS
+      value: --insecure-registry="10.10.10.16:5000"
     image: docker:18.09-dind
     securityContext:
       privileged: true
