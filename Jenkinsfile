@@ -1,7 +1,8 @@
 pipeline {
   agent {
     kubernetes {
-      yaml """
+      label 'master'
+      yaml '''
 apiVersion: v1
 kind: Pod
 spec:
@@ -18,7 +19,7 @@ spec:
     command:
     - cat
     tty: true
-"""
+'''
     }
   }
   stages {
