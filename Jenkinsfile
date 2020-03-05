@@ -24,7 +24,7 @@ spec:
   }
   stages {
 
-    stage('Build') {
+    stage('Build & Push') {
       steps {
         container('docker') {
           // Build new image
