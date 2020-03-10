@@ -56,7 +56,7 @@ spec:
       }
     }
 
-    stage('Promote to Prod') {
+    stage('Promote to Production') {
       steps {
         input message:'Approve deployment?'
         container('tools') {
