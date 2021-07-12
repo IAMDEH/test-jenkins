@@ -15,7 +15,7 @@ spec:
     - name: dockersock
       mountPath: /var/run/docker.sock
   - name: tools
-    image: argoproj/argo-cd-ci-builder:v0.13.1
+    image: argoproj/argo-cd-ci-builder:latest
     command:
     - cat
     tty: true    
