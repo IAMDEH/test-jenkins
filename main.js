@@ -14,7 +14,7 @@ console.log(process.env.ENVIRONMENT || 'prod');
 const server = http.createServer((_, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello, Jenkins World!\n');
+  res.end('This is working!\n');
 });
 
 
