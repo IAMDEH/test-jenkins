@@ -32,9 +32,9 @@ spec:
       steps {
         container('docker') {
           // Build new image
-            sh "docker build -t 10.10.10.16:5000/test:${env.GIT_COMMIT} ."
+            sh "docker build -t 192.168.1.40:5000/test:${env.GIT_COMMIT} ."
           // Publish new image
-            sh "docker push 10.10.10.16:5000/test:${env.GIT_COMMIT}"
+            sh "docker push 192.168.1.40:5000/test:${env.GIT_COMMIT}"
         }
       }
     }
@@ -49,7 +49,7 @@ spec:
           sh "git config --global user.email 'ci@ci.com'"
 
           dir("test-jenkins-deploy") {
-            sh "cd ./e2e && kustomize edit set image 10.10.10.16:5000/test:${env.GIT_COMMIT}"
+            sh "cd ./e2e && kustomize edit set image 192.168.1.40:5000/test:${env.GIT_COMMIT}"
             sh "git commit -am 'Publish new version' && git push || echo 'no changes'"
           }
         }
@@ -61,7 +61,7 @@ spec:
         input message:'Approve deployment?'
         container('tools') {
           dir("test-jenkins-deploy") {
-            sh "cd ./prod && kustomize edit set image 10.10.10.16:5000/test:${env.GIT_COMMIT}"
+            sh "cd ./prod && kustomize edit set image 192.168.1.40:5000/test:${env.GIT_COMMIT}"
             sh "git commit -am 'Publish new version' && git push || echo 'no changes'"
           }
         }
