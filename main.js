@@ -14,7 +14,7 @@ console.log(process.env.ENVIRONMENT || 'Production Environment');
 const server = http.createServer((_, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-  res.end('This is Ikhlas!\n');
+  res.end('This is a demo!\n');
 });
 
 
