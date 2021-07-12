@@ -3,9 +3,9 @@ const http = require('http');
 const hostname = '0.0.0.0';
 const port = 8080;
 
-console.log(process.env.ENVIRONMENT || 'e2e');
+console.log(process.env.ENVIRONMENT || 'End-to-End Testing Environment');
 
-console.log(process.env.ENVIRONMENT || 'prod');
+console.log(process.env.ENVIRONMENT || 'Production Environment');
 
 /*if (process.env.ENVIRONMENT === 'prod') {	
     process.exit(1);	
